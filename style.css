@@ -1,0 +1,202 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: linear-gradient(135deg, #002339, #00416A, #005f9e);
+    background-size: 200% 200%;
+    animation: gradientShift 10s ease infinite;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.container{
+    width: 90%;
+    max-width: 700px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+}
+
+.container > * {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.container h1 {
+    font-weight: 700;
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation-delay: 0.2s;
+}
+
+.container button {
+    border: 0;
+    outline: 0;
+    background: linear-gradient(45deg, #5372F0, #6C5CE7);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 26px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    animation: pulse 2s infinite;
+}
+
+.container button:hover {
+    animation: none;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.container button:active {
+    animation: shake 0.5s ease-in-out;
+}
+
+.container button img {
+    width: 24px;
+    margin-right: 10px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.display{
+    background: rgba(51, 51, 51, 0.8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.display:focus-within {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.display input {
+    border: 0;
+    outline: 0;
+    font-size: 24px;
+    background: transparent;
+    color: #fff;
+    flex: 1;
+    width: 100%;
+}
+
+.display img {
+    width: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.display img:hover {
+    transform: scale(1.1);
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 600px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .container h1 {
+        font-size: 28px;
+    }
+
+    .display {
+        padding: 15px;
+    }
+
+    .display input {
+        font-size: 18px;
+    }
+
+    .container button {
+        font-size: 16px;
+        padding: 12px 20px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .container h1 {
+        font-size: 24px;
+    }
+
+    .display input {
+        font-size: 16px;
+    }
+
+    .container button {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+
+    .container button img {
+        width: 20px;
+    }
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.toast.show {
+    opacity: 1;
+}
